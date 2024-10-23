@@ -16,8 +16,12 @@
 
 class SchedulerPriority : public Scheduler {
 private:
-    // TODO: add necessary member variables here for your implementation
-
+    int sim_time = 0;               // Tracks the elapsed time during the simulation
+    PCB* active_proc = nullptr;      // Pointer to the process currently running
+    std::vector<PCB> ready_list;     // List of processes waiting to be executed
+    int wait_sum = 0;                // Accumulated total wait time
+    int turnaround_sum = 0;          // Accumulated total turnaround time
+  
 public:
     /**
      * @brief Construct a new SchedulerPriority object
